@@ -8,8 +8,8 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.STRING(3),
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
+        unique: true,
         primaryKey: true,
       },
       name: {
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       flagImage: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       continente: {
@@ -26,11 +26,10 @@ module.exports = (sequelize) => {
       },
       capital: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       subregion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       area: {
         type: DataTypes.INTEGER,
