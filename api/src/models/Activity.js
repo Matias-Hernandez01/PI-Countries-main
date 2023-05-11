@@ -5,10 +5,9 @@ module.exports = (sequelize) => {
     'activity',
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
       },
 
       name: {
