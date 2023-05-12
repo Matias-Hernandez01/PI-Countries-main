@@ -1,4 +1,4 @@
-const countriesById = require('../countriesID/countriesById');
+const countriesById = require('./countriesById');
 
 module.exports = async (req, res) => {
   try {
