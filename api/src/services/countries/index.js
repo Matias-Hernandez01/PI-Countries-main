@@ -1,17 +1,19 @@
 const axios = require('axios');
 const { Country, Activity } = require('../../db');
+const { Op } = require('sequelize');
 
 class CountriesService {
   constructor() {}
-  async findAll(name) {
-    const findAllCountries = await Country.findAll({ limit: 100 });
-    if (name) {
-      const searchResults = await findAllCountries.filter((pais) =>
-        pais.name.toLowerCase().includes(name.toLowerCase())
-      );
-      return searchResults;
+
+  async checkingBDD() {
+    const response = await Country.findAll();
+    if (response.length === 0) {
+      return await this.countriesToDb();
     }
-    return findAllCountries;
+  }
+
+  async findAll() {
+    return await Country.findAll();
   }
 
   async countriesToDb() {
@@ -47,7 +49,21 @@ class CountriesService {
   }
 
   async searchByName(name) {
-    const findByName = await Country.findAll({ where: name });
+    const findByName = await Country.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${name}%`,
+        },
+      },
+      include: [
+        {
+          model: Activity,
+          attributes: ['name', 'dificultad', 'duracion', 'temporada'],
+          through: { attributes: [] },
+        },
+      ],
+    });
+    return findByName;
   }
 }
 
