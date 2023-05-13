@@ -5,6 +5,7 @@ const controller = new CountriesController();
 
 //* Obtener todos los paises.
 router.get('/', controller.findAll);
+router.get('/', controller.searchByName);
 
 //* Buscar pais por id.
 router.get('/:id', controller.findOne);
