@@ -11,8 +11,25 @@ class CountriesService {
       return await this.countriesToDb();
     }
   }
-
-  async findAll() {
+  //*funcion findAll => recibe los datos de la BDD y los envia como respuesta.
+  async findAll(name) {
+    if (name) {
+      const findByName = await Country.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        },
+        include: [
+          {
+            model: Activity,
+            attributes: ['name', 'dificultad', 'duracion', 'temporada'],
+            through: { attributes: [] },
+          },
+        ],
+      });
+      return findByName;
+    }
     return await Country.findAll();
   }
 
@@ -35,6 +52,8 @@ class CountriesService {
     const resultado = await Country.bulkCreate(countries);
     return resultado;
   }
+
+  //* handler que busca por id recibida por params
   async findOne(id) {
     const countryById = await Country.findByPk(id.toUpperCase(), {
       include: [
@@ -48,6 +67,7 @@ class CountriesService {
     return countryById;
   }
 
+  //*handler que busca por name recibido por query
   async searchByName(name) {
     const findByName = await Country.findAll({
       where: {
