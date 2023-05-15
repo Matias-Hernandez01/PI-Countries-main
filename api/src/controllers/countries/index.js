@@ -25,17 +25,6 @@ class CountriesController {
       res.status(400).json({ error: error.message });
     }
   }
-
-  async searchByName(req, res) {
-    await service.checkingBDD();
-    try {
-      const { name } = req.query;
-      const response = await service.searchByName(name);
-      res.status(200).json(response);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  }
 }
 
 module.exports = CountriesController;
