@@ -3,7 +3,7 @@ const service = new CountriesService();
 
 class CountriesController {
   constructor() {}
-
+//funcion findAll => recibe los datos de la BDD y los envia como respuesta.
   async findAll(req, res) {
     await service.checkingBDD();
     try {
