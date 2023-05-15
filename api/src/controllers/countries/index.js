@@ -13,6 +13,7 @@ class CountriesController {
       res.status(400).json({ error: error.message });
     }
   }
+
   //* handler que busca por id recibida por params
   async findOne(req, res) {
     await service.checkingBDD();
@@ -24,6 +25,8 @@ class CountriesController {
       res.status(400).json({ error: error.message });
     }
   }
+
+  //*habdler que busca por name recibido por query
   async searchByName(req, res) {
     await service.checkingBDD();
     try {
