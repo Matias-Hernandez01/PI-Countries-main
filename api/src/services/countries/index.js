@@ -66,25 +66,6 @@ class CountriesService {
     });
     return countryById;
   }
-
-  //*handler que busca por name recibido por query
-  async searchByName(name) {
-    const findByName = await Country.findAll({
-      where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
-        },
-      },
-      include: [
-        {
-          model: Activity,
-          attributes: ['name', 'dificultad', 'duracion', 'temporada'],
-          through: { attributes: [] },
-        },
-      ],
-    });
-    return findByName;
-  }
 }
 
 module.exports = CountriesService;
