@@ -3,7 +3,7 @@ const service = new CountriesService();
 
 class CountriesController {
   constructor() {}
-//funcion findAll => recibe los datos de la BDD y los envia como respuesta.
+  //funcion findAll => recibe los datos de la BDD y los envia como respuesta.
   async findAll(req, res) {
     await service.checkingBDD();
     try {
@@ -13,7 +13,7 @@ class CountriesController {
       res.status(400).json({ error: error.message });
     }
   }
-
+  //* handler que busca por id recibida por params
   async findOne(req, res) {
     await service.checkingBDD();
     try {
