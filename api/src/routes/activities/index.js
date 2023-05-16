@@ -7,6 +7,6 @@ const controller = new ActivityController();
 router.post('/', controller.createActivity);
 
 //*Ruta para recibir todas las actividades
-// router.get('/', controller.allActivities);
+router.get('/', controller.allActivities);
 
 module.exports = router;
