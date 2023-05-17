@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2? family= Russo+One & display=swap');
+
+.container{
+  background-image: url("../../images/background-landing.jpg");
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+}
+
+.containerTitle h1{
+  font-family: 'Russo One', sans-serif;
+  font-size: 60px;
+  color: #ffd54a;
+  text-shadow: -9px 4px 6px rgb(5, 4, 0);
+}
+.containerForms{
+  background-color: #5e4e1c5e;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+.containerForms div{
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  display: grid;
+  /* height: 50%; */
+}
+
+.containerForms form{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.forms div{
+  align-items: center;
+}
+
+.input{
+  display: grid;
+  width: 50%;
+  margin-left: 120px;
+}
+
+.section{
+  display:flex;
+  width: 600px;
+  height: 430px;
+}
+
+.section img{
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: .4;
+  transition: .4s ease;
+  border-radius: 20px;
+}
+
+.section img:hover{
+  cursor:crosshair;
+  width: 400px;
+  opacity: 1.4;
+  border-radius: 220px;
+  filter:contrast(120%);
+}
+
+.containerSection{
+  margin-top: 150px;
+  margin-left: 50px;
+  width: 100%;
+  height: 430px;
+}
+
+.label{
+  font-size: 20px;
+  font-family: monospace;
+  color: #ffff;
+  text-shadow: 2px 2px 0px #000000;
+  width: 100%;
+  /* font-style: italic; */
+}
+
+.inputNegative{
+  font-size: 20px;
+  font-family: monospace;
+  color: #ff0000;
+  text-shadow: 2px 2px 0px #6b0000;
+  width: 100%;
+}
+
+.inputTrue{
+  font-size: 20px;
+  font-family: monospace;
+  color: #33ff00;
+  text-shadow: 2px 2px 0px #175215;
+  width: 100%;
+}
+
