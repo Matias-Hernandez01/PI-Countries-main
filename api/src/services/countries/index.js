@@ -53,7 +53,7 @@ class CountriesService {
     return resultado;
   }
 
-  //* handler que busca por id recibida por params
+  //* handlers que busca por id recibida por params
   async findOne(id) {
     const countryById = await Country.findByPk(id.toUpperCase(), {
       include: [
