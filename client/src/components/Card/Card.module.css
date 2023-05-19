@@ -1,0 +1,11 @@
+.card{
+  display: grid table-column;
+  width: 300px;
+  right: 300px;
+}
+
+.card img{
+  width: 90px;
+  right: 90px;
+}
+
