@@ -1,0 +1,18 @@
+.mainContainer{
+  background-image: url("../../images/background-home.jpg");
+  background-size: contain;
+  display: grid;
+  grid-template-rows: 5vh 5vh 85vh;
+  gap: 10px;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.paginado{
+  width: 100%;
+  background-color: darkorchid;
+}
