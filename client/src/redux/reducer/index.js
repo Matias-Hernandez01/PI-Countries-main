@@ -1,5 +1,5 @@
 import { GET_API, GET_COUNTRY, FILTER } from '../actions/type';
-import { aplyFilter } from './utils';
+import { applyFilter } from './utils';
 const initialState = {
   allCountries: [],
   aux: [],
@@ -18,13 +18,13 @@ const rootReducer = (State = initialState, action) => {
         allCountries: action.payload,
       };
     case FILTER: {
+      const continent = action.payload[0];
+      const population = action.payload[1];
+      const countries = [...State.allCountries];
+      const resultado = applyFilter(countries, continent, population);
       return {
         ...State,
-        aux: aplyFilter(
-          [...allCountries],
-          payload.continent,
-          payload.population
-        ),
+        aux: resultado,
       };
     }
 
