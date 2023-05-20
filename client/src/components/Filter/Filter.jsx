@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { filter } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
@@ -15,7 +15,7 @@ const Filter = () => {
     setValue({ ...value, oneFilter: valueFilter });
   };
 
-  const changeOnFilterPolation = (event) => {
+  const changeOnFilterPoblation = (event) => {
     const valueFilter = event.target.value;
     setValue({ ...value, twoFilter: valueFilter });
   };
@@ -23,10 +23,7 @@ const Filter = () => {
   const filterTotal = () => {
     console.log(value.oneFilter, value.twoFilter);
     dispatch(filter(value.oneFilter, value.twoFilter));
-  };
-
-  const reset = () => {
-    setValue({ oneFilter: '', twoFilter: '' });
+    setValue({ ...value, oneFilter: '', twoFilter: '' });
   };
 
   return (
@@ -43,15 +40,22 @@ const Filter = () => {
           <option value='Antarctica'>Antartida</option>
           <option value='Activity'>Activity</option>
         </select>
-        <select onChange={changeOnFilterPolation}>
+        <select
+          disabled={value.oneFilter == 'Activity' ? true : ''}
+          onChange={changeOnFilterPoblation}
+        >
           <option>order and population</option>
           <option value='A-Z'>A-Z</option>
           <option value='Z-A'>Z-A</option>
-          <option value='+'>Poblacion +</option>
-          <option value='-'>Poblacion -</option>
+          <option value='-'>Poblacion (Menor a mayor)</option>
+          <option value='+'>Poblacion (Mayor a menor)</option>
         </select>
-        <button onClick={filterTotal}>Filter</button>
-        <button onClick={reset}>Reset filter</button>
+        <button
+          disabled={!value.oneFilter && !value.twoFilter}
+          onClick={filterTotal}
+        >
+          Filter
+        </button>
       </div>
     </div>
   );
