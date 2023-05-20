@@ -1,4 +1,4 @@
-import { GET_API, GET_COUNTRY, FILTER } from '../type';
+import { GET_API, GET_COUNTRY, FILTER } from './type';
 import axios from 'axios';
 
 export const getApi = () => {
@@ -22,7 +22,7 @@ export const getCountry = (name) => {
 export const filter = (continent, population) => {
   return {
     type: FILTER,
-    continent,
+    payload: continent,
     population,
   };
 };
