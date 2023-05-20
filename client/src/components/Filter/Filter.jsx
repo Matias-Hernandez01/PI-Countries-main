@@ -41,7 +41,7 @@ const Filter = () => {
           <option value='Activity'>Activity</option>
         </select>
         <select
-          disabled={value.oneFilter == 'Activity' ? true : ''}
+          disabled={value.oneFilter === 'Activity' ? true : ''}
           onChange={changeOnFilterPoblation}
         >
           <option>order and population</option>
