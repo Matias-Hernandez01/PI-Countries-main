@@ -49,8 +49,16 @@ class CountriesService {
         poblacion: pais.population,
       });
     });
-    const resultado = await Country.bulkCreate(countries);
-    return resultado;
+    await Country.bulkCreate(countries);
+    return await Country.findAll({
+      include: [
+        {
+          model: Activity,
+          attributes: ['name', 'dificultad', 'duracion', 'temporada'],
+          through: { attributes: [] },
+        },
+      ],
+    });
   }
 
   //* handlers que busca por id recibida por params
