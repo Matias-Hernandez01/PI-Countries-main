@@ -1,7 +1,8 @@
-import { GET_API, GET_COUNTRY } from '../type';
-
+import { GET_API, GET_COUNTRY, FILTER } from '../actions/type';
+import { aplyFilter } from './utils';
 const initialState = {
   allCountries: [],
+  aux: [],
 };
 
 const rootReducer = (State = initialState, action) => {
@@ -16,6 +17,16 @@ const rootReducer = (State = initialState, action) => {
         ...State,
         allCountries: action.payload,
       };
+    case FILTER: {
+      return {
+        ...State,
+        aux: aplyFilter(
+          [...allCountries],
+          payload.continent,
+          payload.population
+        ),
+      };
+    }
 
     default:
       return { ...State };
