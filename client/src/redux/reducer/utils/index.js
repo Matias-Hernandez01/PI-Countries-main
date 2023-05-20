@@ -1,13 +1,13 @@
-const aplyFilter = (data, continent, population) => {
+const applyFilter = (data, continent, population) => {
   if (continent) {
     const results = data.filter((country) => {
-      if (continent === 'Activity' && country.activity) {
+      if (continent === 'Activity' && country.activities) {
         return country;
       } else {
-        country.continent === continent;
+        return country.continent === continent;
       }
-      return results;
     });
+
     if (population) {
       switch (population) {
         case 'A-Z': {
@@ -16,6 +16,7 @@ const aplyFilter = (data, continent, population) => {
             if (a.name > b.name) return 1;
             return 0;
           });
+          break; // Agregar break aquí
         }
         case 'Z-A': {
           results.sort((a, b) => {
@@ -23,6 +24,7 @@ const aplyFilter = (data, continent, population) => {
             if (a.name > b.name) return -1;
             return 0;
           });
+          break; // Agregar break aquí
         }
         case '+': {
           results.sort((a, b) => {
@@ -30,6 +32,7 @@ const aplyFilter = (data, continent, population) => {
             if (a.poblacion > b.poblacion) return -1;
             return 0;
           });
+          break; // Agregar break aquí
         }
         case '-': {
           results.sort((a, b) => {
@@ -37,14 +40,20 @@ const aplyFilter = (data, continent, population) => {
             if (a.poblacion > b.poblacion) return 1;
             return 0;
           });
-          break;
+          break; // Agregar break aquí
+        }
+        default: {
+          return;
         }
       }
     }
+
     return results;
   }
+
+  return data;
 };
 
 module.exports = {
-  aplyFilter,
+  applyFilter,
 };
