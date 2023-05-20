@@ -4,8 +4,10 @@ import Card from '../Card/Card';
 import style from './CardsContainer.module.css';
 import { useState } from 'react';
 import Paginado from '../Paginado/Paginado';
+import Filter from '../Filter/Filter';
 
 const CardsContainer = () => {
+  console.log('Holas');
   const getInfo = useSelector((state) => state.allCountries);
   //*Pagina actual
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,7 +37,7 @@ const CardsContainer = () => {
             paginado={paginado}
           />
         </div>
-        <div>FILTRADO</div>
+        <Filter />
         <div className={style.cards}>
           {currentCountries?.map((country, index) => {
             return (
