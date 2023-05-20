@@ -7,18 +7,18 @@ import Paginado from '../Paginado/Paginado';
 import Filter from '../Filter/Filter';
 
 const CardsContainer = () => {
-  console.log('Holas');
   const getInfo = useSelector((state) => state.allCountries);
-  //*Pagina actual
+  const aux = useSelector((state) => state.aux);
   const [currentPage, setCurrentPage] = useState(1);
-  //*Paises por pagina => 10 en mi caso
   const [countryPerPage, setCountryPer] = useState(12);
-  //*Indice del ultimo pais, multiplicando pagina actual * paises por pagina.
   const indexOfLastCountry = currentPage * countryPerPage;
-  //*Indice del primer pais, multiplicando pagina
   const indexOfFirstCountry = indexOfLastCountry - countryPerPage;
 
   const currentCountries = getInfo.slice(
+    indexOfFirstCountry,
+    indexOfLastCountry
+  );
+  const currentCountriesFilter = aux.slice(
     indexOfFirstCountry,
     indexOfLastCountry
   );
@@ -39,17 +39,31 @@ const CardsContainer = () => {
         </div>
         <Filter />
         <div className={style.cards}>
-          {currentCountries?.map((country, index) => {
-            return (
-              <div key={index}>
-                <Card
-                  name={country.name}
-                  image={country.flagImage}
-                  continent={country.continent}
-                />
-              </div>
-            );
-          })}
+          {currentCountriesFilter.length ? (
+            <>
+              {currentCountriesFilter.map((country, index) => (
+                <div key={index}>
+                  <Card
+                    name={country.name}
+                    image={country.flagImage}
+                    continent={country.continent}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            <>
+              {currentCountries.map((country, index) => (
+                <div key={index}>
+                  <Card
+                    name={country.name}
+                    image={country.flagImage}
+                    continent={country.continent}
+                  />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </>
