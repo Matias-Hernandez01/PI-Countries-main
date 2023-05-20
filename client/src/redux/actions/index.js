@@ -22,7 +22,6 @@ export const getCountry = (name) => {
 export const filter = (continent, population) => {
   return {
     type: FILTER,
-    payload: continent,
-    population,
+    payload: [continent, population],
   };
 };
