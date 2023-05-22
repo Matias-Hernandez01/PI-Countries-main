@@ -1,6 +1,5 @@
 .mainContainer{
-  background-image: url("../../images/background-home.jpg");
-  background-size: contain;
+  background-color: black;
   display: grid;
   grid-template-rows: 5vh 5vh 85vh;
   gap: 10px;
@@ -9,10 +8,20 @@
 .cards{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
+  margin-left: 25px;
+  margin-top: 25px;
 }
 
 .paginado{
   width: 100%;
-  background-color: darkorchid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filterContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
 }
