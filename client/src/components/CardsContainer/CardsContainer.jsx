@@ -10,7 +10,7 @@ const CardsContainer = () => {
   const getInfo = useSelector((state) => state.allCountries);
   const aux = useSelector((state) => state.aux);
   const [currentPage, setCurrentPage] = useState(1);
-  const [countryPerPage, setCountryPer] = useState(12);
+  const [countryPerPage] = useState(12);
   const indexOfLastCountry = currentPage * countryPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countryPerPage;
 
@@ -33,11 +33,14 @@ const CardsContainer = () => {
         <div className={style.paginado}>
           <Paginado
             countriesPerPage={countryPerPage}
-            allCountries={getInfo.length}
+            allCountries={getInfo}
+            aux={aux}
             paginado={paginado}
           />
         </div>
-        <Filter />
+        <div className={style.filterContainer}>
+          <Filter />
+        </div>
         <div className={style.cards}>
           {currentCountriesFilter.length ? (
             <>
