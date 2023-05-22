@@ -51,7 +51,10 @@ const Filter = () => {
           <option value='+'>Poblacion (Mayor a menor)</option>
         </select>
         <button
-          disabled={!value.oneFilter && !value.twoFilter}
+          disabled={
+            value.oneFilter === 'Continent:' ||
+            value.twoFilter === 'order and population'
+          }
           onClick={filterTotal}
         >
           Filter
