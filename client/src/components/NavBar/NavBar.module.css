@@ -1,41 +1,80 @@
 .containerNavBar{
-  background-color: aliceblue;
+  background-image: url("../../images/background-home.jpg");
+  width: 100%;
   display: grid;
-  grid-template-columns:  0.3fr 1fr 0.5fr; 
-  height: 100px;
-  margin: 10px;
-  border-radius: 10px ;
+  grid-template-columns:  0.2fr 1fr 0.3fr; 
+  height: 90px;
 }
 
 .containerImage{
- justify-items: center;
+  display: flex;
+  align-items: center;
+ justify-content: center;
 }
 
 .logoImage{
-  width: 90px;
-  height: 90px;
-  opacity: .8;
+  width: 70px;
+  height: 70px;
+  opacity: .9;
+  border-radius: 50%;
+  animation-name: girarb;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  display: inline-block;
+  cursor: pointer;
+}
+@keyframes girarb {
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
 }
 
 .containerSearchBar{
-  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+  .buttonAndInput {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio mínimo entre la imagen y el input */
+  }
+
+
+.containerCreate {
   display: grid;
-  align-self: center;
-}
-
-.buttonAndInput{
-  background-color: aliceblue;
-  height: 100%;
-}
-
-.buttonAndInput button{
-  margin-right: 10px;
-}
-
-
-.containerCreate{
-  background-color: #f1ff;
-  align-self: center;
-  display: grid;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
+}
+
+.create{
+  background-color: black;
+  color: aliceblue;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lupa{
+  width: 50px;
+  height: 50px;
+}
+.lupa:hover{
+  width: 55px;
+  height: 55px;
+  cursor:pointer;
+}
+
+.inputSearch input {
+  width: 200px; 
+  height: 25px;
+  border-radius: 5px;
 }
