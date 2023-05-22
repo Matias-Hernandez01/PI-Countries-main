@@ -1,5 +1,5 @@
-import { GET_API, GET_COUNTRY, FILTER } from '../actions/type';
-import { applyFilter } from './utils';
+import { GET_API, GET_COUNTRY, FILTER, SEARCH } from '../actions/type';
+import { applyFilter, searchByName } from './utils';
 const initialState = {
   allCountries: [],
   aux: [],
@@ -25,6 +25,20 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         aux: resultado,
+      };
+    }
+    case SEARCH: {
+      const allCountries = [...State.allCountries];
+      const aux = [...State.aux];
+      const searchResult = searchByName(
+        allCountries,
+        aux,
+        action.payload.valueSearch
+      );
+      console.log(action.payload);
+      return {
+        ...State,
+        aux: searchResult,
       };
     }
 
