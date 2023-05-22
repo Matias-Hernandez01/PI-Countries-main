@@ -1,11 +1,52 @@
-.card{
-  display: grid table-column;
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+.card {
+  background: rgb(186,98,20);
+  background: linear-gradient(0deg, rgba(186,98,20,1) 0%, rgba(214,174,127,0.865983893557423) 76%, rgba(195,144,85,1) 100%);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 280px;
+  height: 200px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  border: 2px solid rgb(255, 255, 255);
+
+}
+.card:hover{
+  opacity: 1.5;
+  border: 2px solid rgb(255, 255, 255);
+  width: 285px;
+  height: 205px;
+  background: rgb(186,98,20);
+  background: linear-gradient(0deg, rgba(186,98,20,1) 0%, rgba(214,174,127,1) 33%, rgba(214,174,127,0.865983893557423) 76%, rgba(195,144,85,1) 100%);
+}
+
+.containerImage{
   width: 300px;
-  right: 300px;
 }
 
-.card img{
-  width: 90px;
-  right: 90px;
+.imagen {
+  width: 100px;
+  height: 5;
+  margin-top: 10px;
+  align-self: start; 
 }
 
+.name {
+  font-size: 25px;
+  font-weight: 100;
+  font-family: 'Russo One', sans-serif;
+  color: white;
+  text-shadow: #000000 -5px 0px 10px;
+  margin: 0; 
+}
+
+.continent {
+  margin-bottom: 5px;
+  font-family: 'Russo One', sans-serif;
+  color: #ffffff;
+  text-shadow: #000000 -5px 0px 10px;
+  font-weight: 100;
+}
