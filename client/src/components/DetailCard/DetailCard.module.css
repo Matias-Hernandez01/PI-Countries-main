@@ -1,0 +1,112 @@
+.mainContainer{
+  background-color: #292828;
+  height: 90vh;
+}
+
+.detailContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    background-color: #292828;
+    padding: 10px 0px 0px 20px;
+    row-gap: 30px;
+    justify-content: center;
+    align-content: center;
+}
+
+.containerBack{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 10px 10px 25px;
+  background-color: #292828;
+  height: 100px;
+}
+
+.flechaBack{
+  width: 50px;
+  height: 50px;
+  transform: rotate(180deg);
+  opacity: .7;
+}
+
+.flechaBack:hover{
+  width: 55px;
+  height: 55px;
+  opacity: 1.3;
+  cursor: pointer;
+}
+
+.imageContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image{
+  width: 100%;
+  height:100%;
+  border-radius: 30px;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+  object-fit: cover;
+}
+
+.detailCountry{
+  width: 95%;
+  height: 100%;
+  border-radius: 10%;
+  border: 2px solid white;
+  background-image: url("../../images/background-home.jpg");
+  background-size: cover;
+}
+
+.name{
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #292828;
+  text-shadow: 2px 0px 5px white;
+}
+
+
+.capital{
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #292828;
+  text-shadow: 2px 0px 5px white;
+  }
+  
+  .continent{
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #292828;
+    text-shadow: 2px 0px 5px white;
+  }
+  
+.subregion{
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #292828;
+  text-shadow: 2px 0px 5px white;
+}
+
+.area{
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #292828;
+  text-shadow: 2px 0px 5px white;
+}
+
+.poblacion{
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #292828;
+  text-shadow: 2px 0px 5px white;
+}
