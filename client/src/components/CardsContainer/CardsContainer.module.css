@@ -1,5 +1,5 @@
 .mainContainer{
-  background-color: black;
+  background-color: rgb(41, 40, 40);
   display: grid;
   grid-template-rows: 5vh 5vh 85vh;
   gap: 10px;
