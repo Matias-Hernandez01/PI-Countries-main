@@ -9,7 +9,6 @@ const Filter = () => {
     twoFilter: '',
   });
 
-  console.log('Me renderizé');
   const changeOnFilterContinent = (event) => {
     const valueFilter = event.target.value;
     setValue({ ...value, oneFilter: valueFilter });
