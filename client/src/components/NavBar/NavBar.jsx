@@ -34,7 +34,12 @@ const NavBar = () => {
       </div>
       <div className={style.containerSearchBar}>
         <div className={style.buttonAndInput}>
-          <img className={style.lupa} src={image} onClick={search} />
+          <img
+            className={style.lupa}
+            src={image}
+            onClick={search}
+            alt='Imagen de search'
+          />
         </div>
         <div className={style.inputSearch}>
           <input
