@@ -47,6 +47,7 @@ const CardsContainer = () => {
               {currentCountriesFilter.map((country, index) => (
                 <div key={index}>
                   <Card
+                    id={country.id}
                     name={country.name}
                     image={country.flagImage}
                     continent={country.continent}
@@ -59,6 +60,7 @@ const CardsContainer = () => {
               {currentCountries.map((country, index) => (
                 <div key={index}>
                   <Card
+                    id={country.id}
                     name={country.name}
                     image={country.flagImage}
                     continent={country.continent}
