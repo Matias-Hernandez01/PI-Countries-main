@@ -1,8 +1,16 @@
-import { GET_API, GET_COUNTRY, FILTER, SEARCH } from '../actions/type';
+import {
+  GET_API,
+  GET_COUNTRY,
+  FILTER,
+  SEARCH,
+  COUNTRY_DETAIL,
+} from '../actions/type';
 import { applyFilter, searchByName } from './utils';
 const initialState = {
   allCountries: [],
   aux: [],
+  detail: [],
+  nameLanding: '',
 };
 
 const rootReducer = (State = initialState, action) => {
@@ -39,6 +47,13 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         aux: searchResult,
+      };
+    }
+
+    case COUNTRY_DETAIL: {
+      return {
+        ...State,
+        detail: action.payload,
       };
     }
 
