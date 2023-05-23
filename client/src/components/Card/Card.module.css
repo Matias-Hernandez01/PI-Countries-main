@@ -50,3 +50,7 @@
   text-shadow: #000000 -5px 0px 10px;
   font-weight: 100;
 }
+
+.link{
+  text-decoration: none;
+}
