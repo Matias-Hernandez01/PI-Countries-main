@@ -9,6 +9,7 @@ const NavBar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [valueSearch, setValueSearch] = useState('');
+  const nombre = localStorage.getItem('nombre');
 
   const handleChangeSearch = (event) => {
     const value = event.target.value;
@@ -50,15 +51,23 @@ const NavBar = () => {
       </div>
 
       <div className={style.containerCreate}>
-        <h4
+        <button
           className={style.create}
           onClick={() => {
             history.push('/create');
           }}
         >
-          CREATE
-        </h4>
-        <h4>NOMBRE</h4>
+          Create
+        </button>
+        <button
+          className={style.create}
+          onClick={() => {
+            history.push('/activities');
+          }}
+        >
+          Activities
+        </button>
+        <h1 className={style.nombre}>{nombre}</h1>
       </div>
     </div>
   );
