@@ -4,8 +4,10 @@ import { getApi } from '../../redux/actions/index';
 import { useState } from 'react';
 import style from './Form.module.css';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Form = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const countryName = useSelector((state) => state.allCountries);
   const [names] = useState([]);
@@ -58,7 +60,7 @@ const Form = () => {
     event.preventDefault();
     axios
       .post('http://localhost:3001/activities', form)
-      .then((res) => alert(res));
+      .then((res) => alert('Actividad creada correctamente'));
   };
 
   useEffect(() => {
@@ -67,19 +69,21 @@ const Form = () => {
 
   return (
     <div className={style.mainContainer}>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className={style.form} onSubmit={handleSubmit}>
+        <h1>Formulario Creación</h1>
+        <div className={style.name}>
           <label>Nombre de actividad:</label>
           <input
+            className={style.input}
             name='name'
             value={form.name}
             placeholder='Nombre de la actividad'
             onChange={handleChange}
           ></input>
         </div>
-        <div>
+        <div className={style.dificultad}>
           <label>Dificultad:</label>
-          <select onChange={handleDificultyChange}>
+          <select className={style.select} onChange={handleDificultyChange}>
             <option value='1'>⭐ ☆ ☆ ☆ ☆</option>
             <option value='2'>⭐⭐ ☆ ☆ ☆</option>
             <option value='3'>⭐⭐⭐ ☆ ☆</option>
@@ -87,9 +91,9 @@ const Form = () => {
             <option value='5'>⭐⭐⭐⭐⭐</option>
           </select>
         </div>
-        <div>
+        <div className={style.duracion}>
           <label>Duración:</label>
-          <select onChange={handleDurationChange}>
+          <select className={style.select} onChange={handleDurationChange}>
             <option value=''>Seleccione</option>
             <option value='0.25'>15 minutos</option>
             <option value='0.5'>30 minutos</option>
@@ -100,18 +104,22 @@ const Form = () => {
             <option value='5'>5 horas</option>
           </select>
         </div>
-        <div>
+        <div className={style.temporadaAndCountries}>
           <label>Temporada:</label>
-          <select name='temporada' onChange={handleChange}>
+          <select
+            className={style.select}
+            name='temporada'
+            onChange={handleChange}
+          >
             <option value='Verano'>Verano</option>
             <option value='Otoño'>Otoño</option>
             <option value='Invierno'>Invierno</option>
             <option value='Primavera'>Primavera</option>
           </select>
         </div>
-        <div>
+        <div className={style.temporadaAndCountries}>
           <label>Paises:</label>
-          <select onChange={handleCountrySelect}>
+          <select className={style.select} onChange={handleCountrySelect}>
             <option>-Seleciona paises-</option>
             {names?.map((name, index) => {
               return (
@@ -124,6 +132,9 @@ const Form = () => {
         </div>
         <div>
           <button
+            onClick={() => {
+              history.push('/home');
+            }}
             disabled={
               !form.name ||
               !form.dificultad ||
