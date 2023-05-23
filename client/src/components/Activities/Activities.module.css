@@ -1,0 +1,114 @@
+.mainContainer {
+  background-color: #292828;
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 20px;
+}
+
+.containerActivity{
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 380px 380px 380px;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  gap: 35px;
+}
+
+.activity{
+  background: rgb(186,98,20);
+  background: linear-gradient(0deg, rgba(186,98,20,1) 0%, rgba(214,174,127,1) 33%, rgba(214,174,127,0.865983893557423) 76%, rgba(195,144,85,1) 100%);
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0px 0px 2px white;
+}
+
+.name{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.name h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.name h1{
+   font-family: monospace;
+   font-size: 35px;
+   color: rgb(0, 0, 0);
+   text-shadow: 5px 5px 10px white; 
+}
+
+.dificultad{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.dificultad h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.dificultad h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
+}
+
+.duracion{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.duracion h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.duracion h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
+}
+
+.temporada{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.temporada h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.temporada h1{
+  font-family: monospace;    font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
+}
