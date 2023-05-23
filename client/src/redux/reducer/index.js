@@ -4,6 +4,7 @@ import {
   FILTER,
   SEARCH,
   COUNTRY_DETAIL,
+  GET_ACTIVITIES,
 } from '../actions/type';
 import { applyFilter, searchByName } from './utils';
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   aux: [],
   detail: [],
   nameLanding: '',
+  activities: [],
 };
 
 const rootReducer = (State = initialState, action) => {
@@ -43,7 +45,6 @@ const rootReducer = (State = initialState, action) => {
         aux,
         action.payload.valueSearch
       );
-      console.log(action.payload);
       return {
         ...State,
         aux: searchResult,
@@ -54,6 +55,13 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         detail: action.payload,
+      };
+    }
+
+    case GET_ACTIVITIES: {
+      return {
+        ...State,
+        activities: action.payload,
       };
     }
 
