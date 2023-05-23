@@ -34,7 +34,7 @@ class CountriesService {
   }
 
   async countriesToDb() {
-    const url = 'https://restcountries.com/v3/all';
+    const url = 'https://rest-countries.up.railway.app/v3/all';
     const countries = [];
     const response = await axios.get(url);
     await response.data.map((pais) => {
