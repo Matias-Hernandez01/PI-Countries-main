@@ -1,4 +1,4 @@
-import { GET_API, GET_COUNTRY, FILTER, SEARCH } from './type';
+import { GET_API, GET_COUNTRY, FILTER, SEARCH, COUNTRY_DETAIL } from './type';
 import axios from 'axios';
 
 export const getApi = () => {
@@ -30,5 +30,12 @@ export const searchByName = (value) => {
   return {
     type: SEARCH,
     payload: value,
+  };
+};
+
+export const countryDetail = (id) => {
+  return async (dispatch) => {
+    const response = await axios.get(`http://localhost:3001/countries/${id}`);
+    dispatch({ type: COUNTRY_DETAIL, payload: response.data });
   };
 };
