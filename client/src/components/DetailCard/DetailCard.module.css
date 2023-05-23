@@ -1,13 +1,14 @@
 .mainContainer{
-  background-color: #292828;
-  height: 90vh;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(143,143,143,1) 55%, rgba(0,0,0,1) 100%);
+  height: 110vh;
 }
 
 .detailContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40vh 40vh;
     gap: 100px;
-    background-color: #292828;
     padding: 10px 0px 0px 20px;
     row-gap: 30px;
     justify-content: center;
@@ -19,8 +20,8 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px 10px 10px 25px;
-  background-color: #292828;
   height: 100px;
+  
 }
 
 .flechaBack{
@@ -60,53 +61,169 @@
   border: 2px solid white;
   background-image: url("../../images/background-home.jpg");
   background-size: cover;
+  display: grid;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
 }
 
 .name{
-  font-size: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  color: #292828;
-  text-shadow: 2px 0px 5px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.name h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.name h1{
+   font-family: monospace;
+   font-size: 35px;
+   color: rgb(0, 0, 0);
+   text-shadow: 5px 5px 10px white; 
+}
+
+.continent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.continent h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.continent h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
 }
 
 
 .capital{
-    font-size: 25px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    color: #292828;
-  text-shadow: 2px 0px 5px white;
-  }
-  
-  .continent{
-    font-size: 25px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    color: #292828;
-    text-shadow: 2px 0px 5px white;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+ }
+
+.capital h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.capital h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
+}
+
   
 .subregion{
-  font-size: 25px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  color: #292828;
-  text-shadow: 2px 0px 5px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.subregion h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.subregion h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
 }
 
 .area{
-  font-size: 25px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  color: #292828;
-  text-shadow: 2px 0px 5px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.area h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.area h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
 }
 
 .poblacion{
-  font-size: 25px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  gap: 15px;
+}
+
+.poblacion h2{
+  font-family: monospace;
+  font-size: 35px;
+  color: white;
+  text-shadow: 5px 5px 10px black;
+}
+
+.poblacion h1{
+  font-family: monospace;
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 5px 5px 10px white; 
+}
+
+
+
+.DetailAndActivities{
+  overflow: auto;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(47,41,33,1) 25%, rgba(0,0,0,1) 50%, rgba(43,38,30,1) 82%, rgba(1,1,1,1) 100%);
+  width: 100%;
+  height: 100%;  
   color: #292828;
   text-shadow: 2px 0px 5px white;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+
+.activity{
+  color:wheat;
+  text-shadow: 2px 10px 5px #292828 ;
+  scroll-behavior:inherit;
+}
+
+.activities{
+  color:rgb(255, 255, 255);
+  text-shadow: 2px 10px 5px #292828 ;
+}
+
+.nameActivity{
+  color:rgb(226, 168, 60);
 }
