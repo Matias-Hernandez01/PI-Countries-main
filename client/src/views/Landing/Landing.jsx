@@ -1,10 +1,5 @@
 import styles from './Landing.module.css';
 import { useState } from 'react';
-import argentina from '../../images/argentina.jpg';
-import brazil from '../../images/brazil.jpg';
-import uruguay from '../../images/uruguay.png';
-import chile from '../../images/chile.png';
-import colombia from '../../images/colombia.jpg';
 import { useHistory } from 'react-router-dom';
 
 const Landing = () => {
@@ -33,10 +28,10 @@ const Landing = () => {
   const validate = (name, value) => {
     const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const regexContraseña = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (name === 'nombre' && value.length < 3) {
+    if (name === 'nombre' && value.length > 10) {
       setErrors({
         ...errors,
-        nombre: 'El nombre debe contener mínimo 3 caracteres',
+        nombre: 'El nombre debe contener máximo 10 caracteres',
       });
     } else if (name === 'nombre') {
       setErrors({
@@ -68,8 +63,9 @@ const Landing = () => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+    localStorage.setItem('nombre', form.nombre);
     setForm({ ...form, nombre: '', correo: '', contraseña: '' });
-    history.push('/home');
+    history.push('/bienvenida');
   };
 
   return (
@@ -134,15 +130,6 @@ const Landing = () => {
             Iniciar sesión
           </button>
         </form>
-      </div>
-      <div className={styles.containerSection}>
-        <section className={styles.section}>
-          <img src={argentina} alt='Argentina'></img>
-          <img src={brazil} alt='Brazil'></img>
-          <img src={uruguay} alt='Uruguay'></img>
-          <img src={chile} alt='Chile'></img>
-          <img src={colombia} alt='Perú'></img>
-        </section>
       </div>
     </div>
   );
