@@ -28,12 +28,45 @@ const DetailCard = () => {
           <img className={style.image} src={country.flagImage} alt='country' />
         </div>
         <div className={style.detailCountry}>
-          <h1 className={style.name}>{country.name}</h1>
-          <h3 className={style.continent}>{country.continent}</h3>
-          <h3 className={style.capital}> {country.capital}</h3>
-          <h3 className={style.subregion}> {country.subregion}</h3>
-          <h3 className={style.area}> {country.area}</h3>
-          <h3 className={style.poblacion}>{country.poblacion}</h3>
+          <div className={style.name}>
+            <h2>Name:</h2>
+            <h1 className={style.name}>{country.name}</h1>
+          </div>
+          <div className={style.continent}>
+            <h2>Continent:</h2>
+            <h1>{country.continent}</h1>
+          </div>
+          <div className={style.capital}>
+            <h2>Capital:</h2>
+            <h1>{country.capital}</h1>
+          </div>
+          <div className={style.subregion}>
+            <h2>Subregion: </h2>
+            <h1>{country.subregion}</h1>
+          </div>
+          <div className={style.area}>
+            <h2>Area: </h2>
+            <h1>{country.area}</h1>
+          </div>
+          <div className={style.poblacion}>
+            <h2>Poblacion: </h2>
+            <h1>{country.poblacion}</h1>
+          </div>
+        </div>
+        <div className={style.DetailAndActivities}>
+          <div className={style.activity}>
+            <h2 className={style.activities}>Activities:</h2>
+            {country?.activities?.map((props) => {
+              return (
+                <div>
+                  <h1 className={style.nameActivity}>{props.name}</h1>
+                  <h1>Dificultad: {props.dificultad}</h1>
+                  <h1>Duración: {props.duracion}</h1>
+                  <h1>Temporada: {props.temporada}</h1>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
