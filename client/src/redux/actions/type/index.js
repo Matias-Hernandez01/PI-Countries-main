@@ -3,3 +3,4 @@ export const GET_COUNTRY = 'GET_COUNTRY';
 export const FILTER = 'FILTER';
 export const SEARCH = 'SEARCH';
 export const COUNTRY_DETAIL = 'COUNTRY_DETAIL';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
