@@ -1,4 +1,110 @@
 .mainContainer{
-  background-color: dimgrey;
-  height: 100vh;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(143,143,143,1) 55%, rgba(0,0,0,1) 100%);
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.form{
+  background-color: rgba(214, 137, 37, 0.781);
+  width: 500px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: 8px 12px 20px black;
+  border: 2px solid black;
+}
+
+.form h1{
+  color:aliceblue;
+  text-shadow: 2px 2px 8px black; 
+}
+
+.name{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.name label{
+  font-size: 17px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.input{
+  width: 250px;
+  height: 30px;
+  margin:0;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgb(248, 186, 17) 
+}
+
+.input::placeholder{
+  color: white;
+  font-family: monospace;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.dificultad{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.dificultad label{
+  font-size: 17px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.select{
+  width: 250px;
+  height: 30px;
+  margin:0;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgb(248, 186, 17) 
+}
+.select:hover{
+  color:black;
+}
+
+.duracion{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.duracion label{
+  font-size: 17px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
+.temporadaAndCountries{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.temporadaAndCountries label{
+  font-size: 17px;
+  font-family: monospace;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
