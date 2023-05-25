@@ -49,6 +49,7 @@ class CountriesService {
         poblacion: pais.population,
       });
     });
+
     await Country.bulkCreate(countries);
     return await Country.findAll({
       include: [
