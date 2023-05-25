@@ -19,12 +19,6 @@ function App() {
       <Route path='/home' component={Home} />
       <Route exact path='/create' component={Form} />
       <Route exact path='/detail/:id' component={Detail} />
-      {location.pathname !== '/bienvenida' &&
-        location.pathname !== '/bienvenida' &&
-        location.pathname !== '/activities' &&
-        location.pathname !== '/home' &&
-        location.pathname !== '/create' &&
-        location.pathname !== '/detail/:id' && <Home />}
     </div>
   );
 }
