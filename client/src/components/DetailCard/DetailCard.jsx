@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { countryDetail } from '../../redux/actions';
 import style from './DetailCard.module.css';
-import flecha from '../../images/flecha.png';
 const DetailCard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -16,12 +15,12 @@ const DetailCard = () => {
   return (
     <div className={style.mainContainer}>
       <div className={style.containerBack}>
-        <img
-          alt='back'
+        <button
           className={style.flechaBack}
-          src={flecha}
           onClick={() => history.push('/home')}
-        ></img>
+        >
+          ◀ Back
+        </button>
       </div>
       <div className={style.detailContainer}>
         <div className={style.imageContainer}>
@@ -29,7 +28,6 @@ const DetailCard = () => {
         </div>
         <div className={style.detailCountry}>
           <div className={style.name}>
-            <h2>Name:</h2>
             <h1 className={style.name}>{country.name}</h1>
           </div>
           <div className={style.continent}>

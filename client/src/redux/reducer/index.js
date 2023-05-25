@@ -5,6 +5,7 @@ import {
   SEARCH,
   COUNTRY_DETAIL,
   GET_ACTIVITIES,
+  FILTER_ACTIVITIES,
 } from '../actions/type';
 import { applyFilter, searchByName } from './utils';
 const initialState = {
@@ -62,6 +63,33 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         activities: action.payload,
+      };
+    }
+
+    case FILTER_ACTIVITIES: {
+      const activities = [...State.activities];
+      const countries = [...State.allCountries];
+      const activity = action.payload;
+      let countriesFinal = [];
+      let activityByCountry = activities.filter((element) => {
+        if (activity === element.name) {
+          return element.countries;
+        }
+      });
+      const nameCountries = [];
+      for (let i = 0; i < activityByCountry.length; i++) {
+        nameCountries.push(activityByCountry[i].countries[0].name);
+      }
+
+      for (let name of nameCountries) {
+        countries.map((element) => {
+          if (name === element.name) countriesFinal.push(element);
+        });
+      }
+
+      return {
+        ...State,
+        aux: countriesFinal,
       };
     }
 

@@ -4,10 +4,8 @@ import { getApi } from '../../redux/actions/index';
 import { useState } from 'react';
 import style from './Form.module.css';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 const Form = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const countryName = useSelector((state) => state.allCountries);
   const [names] = useState([]);
@@ -43,15 +41,18 @@ const Form = () => {
     const updatedCountries = [...form.countries];
 
     if (!updatedCountries.includes(value)) {
-      if (value !== '-Seleciona paises-') {
+      if (value !== '') {
         updatedCountries.push(value);
       }
     } else {
       const index = updatedCountries.indexOf(value);
       updatedCountries.splice(index, 1);
     }
-
-    setForm({ ...form, countries: updatedCountries });
+    if (value === '') {
+      setForm({ ...form, countries: [] });
+    } else {
+      setForm({ ...form, countries: updatedCountries });
+    }
   };
 
   const handleSubmit = (event) => {
@@ -137,6 +138,14 @@ const Form = () => {
               );
             })}
           </select>
+          <div className={style.selectorDePaises}>
+            <p>Paises seleccionados:</p>
+            <div className={style.nameCountriesSelected}>
+              {form.countries.map((country, index) => (
+                <p key={index}>{country}</p>
+              ))}
+            </div>
+          </div>
         </div>
         <div>
           <button

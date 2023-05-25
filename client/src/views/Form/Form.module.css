@@ -107,3 +107,11 @@
   text-shadow: 2px 2px 2px black;
 }
 
+.selectorDePaises {
+  display: flex;
+  flex-direction: column;
+}
+
+.nameCountriesSelected {
+  flex-direction: column; 
+}

@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import { useLocation } from 'react-router-dom';
 import Bienvenida from './views/Bienvenida/Bienvenida';
 import Activities from './components/Activities/Activities';
+import NotFound from './views/NotFound/NotFound';
 
 function App() {
   const location = useLocation();
@@ -19,6 +20,7 @@ function App() {
       <Route path='/home' component={Home} />
       <Route exact path='/create' component={Form} />
       <Route exact path='/detail/:id' component={Detail} />
+      <Route exact path='*' component={NotFound} />
     </div>
   );
 }

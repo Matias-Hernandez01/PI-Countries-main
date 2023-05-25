@@ -9,7 +9,7 @@ const applyFilter = (data, continent, population) => {
           if (a.name > b.name) return 1;
           return 0;
         });
-        break; // Agregar break aquí
+        break;
       }
       case 'Z-A': {
         results.sort((a, b) => {
@@ -17,7 +17,7 @@ const applyFilter = (data, continent, population) => {
           if (a.name > b.name) return -1;
           return 0;
         });
-        break; // Agregar break aquí
+        break;
       }
       case '+': {
         results.sort((a, b) => {
@@ -25,7 +25,7 @@ const applyFilter = (data, continent, population) => {
           if (a.poblacion > b.poblacion) return -1;
           return 0;
         });
-        break; // Agregar break aquí
+        break;
       }
       case '-': {
         results.sort((a, b) => {
@@ -33,7 +33,7 @@ const applyFilter = (data, continent, population) => {
           if (a.poblacion > b.poblacion) return 1;
           return 0;
         });
-        break; // Agregar break aquí
+        break;
       }
       default: {
         return;

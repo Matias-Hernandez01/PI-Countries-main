@@ -5,6 +5,7 @@ import {
   SEARCH,
   COUNTRY_DETAIL,
   GET_ACTIVITIES,
+  FILTER_ACTIVITIES,
 } from './type';
 import axios from 'axios';
 
@@ -51,5 +52,12 @@ export const getActivities = () => {
   return async (dispatch) => {
     const response = await axios.get('http://localhost:3001/activities');
     dispatch({ type: GET_ACTIVITIES, payload: response.data });
+  };
+};
+
+export const filterByActivities = (activities) => {
+  return {
+    type: FILTER_ACTIVITIES,
+    payload: activities,
   };
 };

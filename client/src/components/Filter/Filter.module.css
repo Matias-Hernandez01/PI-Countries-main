@@ -1,0 +1,33 @@
+.filterActivities{
+  display: flex;
+  height: 30px;
+  margin-left: 30px;
+}
+
+.mainContainer{
+  display: flex;
+  margin: 20px;
+  width: 100%;;
+}
+
+.filterContinent{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  height: 30px;
+}
+
+.box{
+  background-color: #AE7529;
+  border-radius: 5px;
+  color: aliceblue;
+  font-family: monospace;
+  font-size: 15px;
+  margin-right: 10px;
+  border: 1px solid white;
+}
+
+.filter{
+  border: 1px solid green;
+  border-radius: 3px;
+}

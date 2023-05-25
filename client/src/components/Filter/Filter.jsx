@@ -1,13 +1,33 @@
-import { useState } from 'react';
-import { filter } from '../../redux/actions';
+import React, { useState, useEffect } from 'react';
+import { filter, getActivities, filterByActivities } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import style from './Filter.module.css';
 const Filter = () => {
   const dispatch = useDispatch();
+  const allActivities = useSelector((state) => state.activities);
+  const [nameActivity] = useState([]);
+
+  allActivities?.filter((activity) =>
+    activity ? nameActivity.push(activity.name) : ''
+  );
+  let values = nameActivity.filter((item, index) => {
+    return nameActivity.indexOf(item) === index;
+  });
+
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
+
   const [value, setValue] = useState({
     oneFilter: '',
     twoFilter: '',
   });
+
+  const handleActivitySelect = (event) => {
+    const value = event.target.value;
+    dispatch(filterByActivities(value));
+  };
 
   const changeOnFilterContinent = (event) => {
     const valueFilter = event.target.value;
@@ -20,16 +40,26 @@ const Filter = () => {
   };
 
   const filterTotal = () => {
-    console.log(value.oneFilter, value.twoFilter);
     dispatch(filter(value.oneFilter, value.twoFilter));
-    setValue({ ...value, oneFilter: '', twoFilter: '' });
   };
 
   return (
-    <div>
-      <div>
-        <select onChange={changeOnFilterContinent}>
-          <option>Continent:</option>
+    <div className={style.mainContainer}>
+      <div className={style.filterActivities}>
+        <select className={style.box} onChange={handleActivitySelect}>
+          <option>-Activity-</option>
+          {values?.map((name, index) => {
+            return (
+              <option key={index} value={name}>
+                {name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <div className={style.filterContinent}>
+        <select className={style.box} onChange={changeOnFilterContinent}>
+          <option value=''>Continent:</option>
           <option value='North America'>America del Norte</option>
           <option value='South America'>America del Sur</option>
           <option value='Asia'>Asia</option>
@@ -37,23 +67,17 @@ const Filter = () => {
           <option value='Oceania'>Oceania</option>
           <option value='Africa'>Africa</option>
           <option value='Antarctica'>Antartida</option>
-          <option value='Activity'>Activity</option>
         </select>
-        <select
-          disabled={value.oneFilter === 'Activity' ? true : ''}
-          onChange={changeOnFilterPoblation}
-        >
-          <option>order and population</option>
+        <select className={style.box} onChange={changeOnFilterPoblation}>
+          <option value=''>order and population</option>
           <option value='A-Z'>A-Z</option>
           <option value='Z-A'>Z-A</option>
           <option value='-'>Poblacion (Menor a mayor)</option>
           <option value='+'>Poblacion (Mayor a menor)</option>
         </select>
         <button
-          disabled={
-            value.oneFilter === 'Continent:' ||
-            value.twoFilter === 'order and population'
-          }
+          className={style.filter}
+          disabled={!value.oneFilter || !value.twoFilter}
           onClick={filterTotal}
         >
           Filter
