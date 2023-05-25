@@ -6,13 +6,11 @@ import { getActivities } from '../../redux/actions';
 
 const Activities = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const allActivities = useSelector((state) => state.activities);
 
   useEffect(() => {
     dispatch(getActivities());
   }, [dispatch]);
-  console.log(allActivities);
 
   return (
     <div className={style.mainContainer}>
