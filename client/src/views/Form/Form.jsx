@@ -19,11 +19,9 @@ const Form = () => {
     countries: [],
   });
 
-  countryName?.filter((country) => {
-    if (country.name) {
-      names.push(country.name);
-    }
-  });
+  countryName?.filter((country) =>
+    country.name ? names.push(country.name) : ''
+  );
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -61,6 +59,14 @@ const Form = () => {
     axios
       .post('http://localhost:3001/activities', form)
       .then((res) => alert('Actividad creada correctamente'));
+    setForm({
+      ...form,
+      name: '',
+      dificultad: 0,
+      duracion: 0,
+      temporada: '',
+      countries: [],
+    });
   };
 
   useEffect(() => {
@@ -84,6 +90,7 @@ const Form = () => {
         <div className={style.dificultad}>
           <label>Dificultad:</label>
           <select className={style.select} onChange={handleDificultyChange}>
+            <option value=''>Seleccione temporada</option>
             <option value='1'>⭐ ☆ ☆ ☆ ☆</option>
             <option value='2'>⭐⭐ ☆ ☆ ☆</option>
             <option value='3'>⭐⭐⭐ ☆ ☆</option>
@@ -111,6 +118,7 @@ const Form = () => {
             name='temporada'
             onChange={handleChange}
           >
+            <option value=''>Seleccione temporada</option>
             <option value='Verano'>Verano</option>
             <option value='Otoño'>Otoño</option>
             <option value='Invierno'>Invierno</option>
@@ -120,7 +128,7 @@ const Form = () => {
         <div className={style.temporadaAndCountries}>
           <label>Paises:</label>
           <select className={style.select} onChange={handleCountrySelect}>
-            <option>-Seleciona paises-</option>
+            <option value=''>-Seleciona paises-</option>
             {names?.map((name, index) => {
               return (
                 <option key={index} value={name}>
@@ -132,9 +140,6 @@ const Form = () => {
         </div>
         <div>
           <button
-            onClick={() => {
-              history.push('/home');
-            }}
             disabled={
               !form.name ||
               !form.dificultad ||
