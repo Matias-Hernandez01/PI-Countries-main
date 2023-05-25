@@ -1,7 +1,7 @@
 .mainContainer{
-  background-color: rgb(41, 40, 40);
+  background-color:#222E38;
   display: grid;
-  grid-template-rows: 5vh 5vh 85vh;
+  grid-template-rows: 5vh 5vh 90vh;
   gap: 10px;
 }
 
