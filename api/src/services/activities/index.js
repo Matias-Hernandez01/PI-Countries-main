@@ -43,7 +43,15 @@ class ActivityService {
 
   //*handlers que retorna todas las actividades creadas en mi BDD.
   async allActivities() {
-    const activities = await Activity.findAll();
+    const activities = await Activity.findAll({
+      include: {
+        model: Country,
+        attributes: ['name'],
+        through: {
+          attributes: [],
+        },
+      },
+    });
     return activities;
   }
 }
