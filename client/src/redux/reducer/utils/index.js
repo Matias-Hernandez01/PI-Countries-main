@@ -45,17 +45,6 @@ const applyFilter = (data, continent, population) => {
   return data;
 };
 
-const searchByName = (allCountries, aux, value) => {
-  const valueString = value.toString().toLowerCase();
-  if (allCountries.length) {
-    const data = allCountries.filter((country) =>
-      country.name.toLowerCase().includes(valueString)
-    );
-    return data;
-  }
-};
-
 module.exports = {
   applyFilter,
-  searchByName,
 };
