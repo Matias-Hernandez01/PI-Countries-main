@@ -3,7 +3,7 @@ import style from './NavBar.module.css';
 import logo from '../../images/mundoLogo.png';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchByName } from '../../redux/actions/index';
+import { getCountry } from '../../redux/actions/index';
 import image from '../../images/lupa.png';
 const NavBar = () => {
   const history = useHistory();
@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   const search = () => {
-    dispatch(searchByName(valueSearch));
+    dispatch(getCountry(valueSearch));
     setValueSearch({ ...valueSearch, valueSearch: '' });
   };
 
