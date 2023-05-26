@@ -1,3 +1,38 @@
 .mundo{
   background-color: aqua;
 }
+.image{
+  animation-name: girarb;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  display: inline-block;
+}
+@keyframes girarb {
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
+}
+
+
+.notFound{
+  color:red
+}
+
+.volverAlHome{
+  border: 1px solid red;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: red;
+}
+
+.volverAlHome:hover{
+  border: 1px solid green;
+  color: greenyellow;
+  background-color: rgba(172, 255, 47, 0.555);
+  cursor: pointer;
+}
