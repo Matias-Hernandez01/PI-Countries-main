@@ -54,9 +54,9 @@ const DetailCard = () => {
         <div className={style.DetailAndActivities}>
           <div className={style.activity}>
             <h2 className={style.activities}>Activities:</h2>
-            {country?.activities?.map((props) => {
+            {country?.activities?.map((props, index) => {
               return (
-                <div>
+                <div key={index}>
                   <h1 className={style.nameActivity}>{props.name}</h1>
                   <h1>Dificultad: {props.dificultad}</h1>
                   <h1>Duración: {props.duracion}</h1>
