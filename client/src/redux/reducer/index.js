@@ -1,13 +1,12 @@
 import {
   GET_API,
   GET_COUNTRY,
-  FILTER,
-  SEARCH,
   COUNTRY_DETAIL,
   GET_ACTIVITIES,
   FILTER_ACTIVITIES,
+  FILTER,
 } from '../actions/type';
-import { applyFilter, searchByName } from './utils';
+import { applyFilter } from './utils';
 const initialState = {
   allCountries: [],
   aux: [],
@@ -22,35 +21,13 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         allCountries: action.payload,
+        aux: action.payload,
       };
     case GET_COUNTRY:
       return {
         ...State,
-        allCountries: action.payload,
+        aux: action.payload,
       };
-    case FILTER: {
-      const continent = action.payload[0];
-      const population = action.payload[1];
-      const countries = [...State.allCountries];
-      const resultado = applyFilter(countries, continent, population);
-      return {
-        ...State,
-        aux: resultado,
-      };
-    }
-    case SEARCH: {
-      const allCountries = [...State.allCountries];
-      const aux = [...State.aux];
-      const searchResult = searchByName(
-        allCountries,
-        aux,
-        action.payload.valueSearch
-      );
-      return {
-        ...State,
-        aux: searchResult,
-      };
-    }
 
     case COUNTRY_DETAIL: {
       return {
@@ -90,6 +67,16 @@ const rootReducer = (State = initialState, action) => {
       return {
         ...State,
         aux: countriesFinal,
+      };
+    }
+    case FILTER: {
+      const continent = action.payload[0];
+      const population = action.payload[1];
+      const countries = [...State.allCountries];
+      const resultado = applyFilter(countries, continent, population);
+      return {
+        ...State,
+        aux: resultado,
       };
     }
 
