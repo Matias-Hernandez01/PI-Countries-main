@@ -3,27 +3,40 @@ import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
 import style from './CardsContainer.module.css';
 import { useState } from 'react';
-import Paginado from '../Paginado/Paginado';
 import Filter from '../Filter/Filter';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getActivities, getApi } from '../../redux/actions';
+import Paginate from '../Paginate/Paginate';
+import PageNumbers from '../Paginate/pageNumbers';
 
 const CardsContainer = () => {
-  const getInfo = useSelector((state) => state.allCountries);
-  const aux = useSelector((state) => state.aux);
+  const dispatch = useDispatch();
+  const dependencia = useSelector((state) => state.aux);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [countryPerPage] = useState(12);
-  const indexOfLastCountry = currentPage * countryPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countryPerPage;
-
-  const currentCountries = getInfo.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
+  const [countriesPage] = useState(12);
+  const indexLastCountry = currentPage * countriesPage;
+  const indexFirstCountry = indexLastCountry - countriesPage;
+  const currentCountries = dependencia.slice(
+    indexFirstCountry,
+    indexLastCountry
   );
-  const currentCountriesFilter = aux.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
-  );
+  const cantCountries = dependencia.length;
 
-  const paginado = (pageNumber) => {
+  const arrayPages = PageNumbers(countriesPage, cantCountries);
+  const cantPages = arrayPages.length;
+
+  useEffect(() => {
+    dispatch(getApi(dependencia));
+    dispatch(getActivities());
+  }, [dispatch]);
+
+  if (currentPage > cantPages) {
+    setCurrentPage(1);
+  }
+
+  const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
@@ -31,44 +44,27 @@ const CardsContainer = () => {
     <>
       <div className={style.mainContainer}>
         <div className={style.paginado}>
-          <Paginado
-            countriesPerPage={countryPerPage}
-            allCountries={getInfo}
-            aux={aux}
-            paginado={paginado}
+          <Paginate
+            countriesPage={countriesPage}
+            allCountries={dependencia.length}
+            paginate={paginate}
+            currentpage={currentPage}
           />
         </div>
         <div className={style.filterContainer}>
           <Filter />
         </div>
         <div className={style.cards}>
-          {currentCountriesFilter.length ? (
-            <>
-              {currentCountriesFilter.map((country, index) => (
-                <div key={index}>
-                  <Card
-                    id={country.id}
-                    name={country.name}
-                    image={country.flagImage}
-                    continent={country.continent}
-                  />
-                </div>
-              ))}
-            </>
-          ) : (
-            <>
-              {currentCountries.map((country, index) => (
-                <div key={index}>
-                  <Card
-                    id={country.id}
-                    name={country.name}
-                    image={country.flagImage}
-                    continent={country.continent}
-                  />
-                </div>
-              ))}
-            </>
-          )}
+          {currentCountries.map((country, index) => (
+            <div key={index}>
+              <Card
+                id={country.id}
+                name={country.name}
+                image={country.flagImage}
+                continent={country.continent}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </>
