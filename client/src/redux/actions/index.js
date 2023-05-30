@@ -20,7 +20,7 @@ export const getApi = () => {
 export const getCountry = (name) => {
   return async (dispatch) => {
     const searchByName = await axios.get(
-      `http://localhost:3001/countries?name=${name}`
+      `http://localhost:3001/countries?name=${name.valueSearch}`
     );
     const countries = searchByName.data;
     dispatch({ type: GET_COUNTRY, payload: countries });
