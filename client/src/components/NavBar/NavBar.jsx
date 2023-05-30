@@ -45,7 +45,7 @@ const NavBar = () => {
         <div className={style.inputSearch}>
           <input
             onChange={handleChangeSearch}
-            placeholder='Search country'
+            placeholder={valueSearch === '' ? 'Search country' : ''}
           ></input>
         </div>
       </div>
