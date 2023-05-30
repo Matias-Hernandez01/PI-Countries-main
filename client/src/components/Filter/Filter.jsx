@@ -3,9 +3,12 @@ import { filter, getActivities, filterByActivities } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import style from './Filter.module.css';
+import { getApi } from '../../redux/actions';
+
 const Filter = () => {
   const dispatch = useDispatch();
   const allActivities = useSelector((state) => state.activities);
+  const allCountries = useSelector((state) => state.aux);
   const [nameActivity] = useState([]);
 
   allActivities?.filter((activity) =>
@@ -41,6 +44,10 @@ const Filter = () => {
 
   const filterTotal = () => {
     dispatch(filter(value.oneFilter, value.twoFilter));
+  };
+
+  const refresh = () => {
+    dispatch(getApi(allCountries));
   };
 
   return (
@@ -82,6 +89,7 @@ const Filter = () => {
         >
           Filter
         </button>
+        <button onClick={refresh}>Refresh</button>
       </div>
     </div>
   );
