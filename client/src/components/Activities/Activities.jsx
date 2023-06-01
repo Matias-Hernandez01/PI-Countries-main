@@ -1,6 +1,5 @@
 import style from './Activities.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
 import { getActivities } from '../../redux/actions';
 
