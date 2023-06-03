@@ -76,6 +76,7 @@ const FormCreate = () => {
 
   return (
     <div className={style.mainContainer}>
+      <button> ⇐ Back</button>
       <form className={style.form} onSubmit={handleSubmit}>
         <h1>Formulario Creación</h1>
         <div className={style.name}>
