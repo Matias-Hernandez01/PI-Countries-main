@@ -2,9 +2,15 @@
   background-color: #222E38;
   height: 85vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   display: inline-block;
+}
+.container{
+  display: flex;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
 }
 
 .form{
@@ -13,6 +19,8 @@
   height: 650px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   justify-content: space-around;
   border-radius: 5px;
   box-shadow: 8px 12px 20px black;
@@ -115,4 +123,29 @@
 
 .nameCountriesSelected {
   flex-direction: column; 
+}
+
+.buttonBack{
+  width: 100px;
+  height: 30px;
+  background-color: #2C3743;
+  color: white;
+  font-family: monospace;
+  font-size: 15px;
+  border: 0;
+  box-shadow: 3px 3px 10px rgb(75, 74, 74);
+}
+
+.buttonBack:hover{
+  width: 103px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.containerButtonBack{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  height: 60px;
+  padding-left: 50px;
 }
