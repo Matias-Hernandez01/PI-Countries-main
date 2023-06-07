@@ -59,14 +59,6 @@ const NavBar = () => {
         >
           Create
         </button>
-        <button
-          className={style.create}
-          onClick={() => {
-            history.push('/activities');
-          }}
-        >
-          Activities
-        </button>
         <h1 className={style.nombre}>{nombre}</h1>
       </div>
     </div>
