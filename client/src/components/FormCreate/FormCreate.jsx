@@ -33,7 +33,7 @@ const FormCreate = () => {
       if (!value) {
         error = 'El nombre es obligatorio';
       } else if (value.length < 3) {
-        error = 'El nombre debe tener al menos 3 caracteres';
+        error = 'Debe tener al menos 3 caracteres';
       }
     } else if (name === 'dificultad') {
       if (value < 1) {
@@ -48,7 +48,7 @@ const FormCreate = () => {
         error = 'La temporada es obligatoria';
       }
     } else if (name === 'countries') {
-      if (value.length === 0) {
+      if (!value) {
         error = 'Debe seleccionar al menos un país';
       }
     }
@@ -212,6 +212,7 @@ const FormCreate = () => {
                 );
               })}
             </select>
+            {errors.countries && <p>{errors.countries}</p>}
             <div className={style.selectorDePaises}>
               <p>Paises seleccionados:</p>
               <div className={style.nameCountriesSelected}>
