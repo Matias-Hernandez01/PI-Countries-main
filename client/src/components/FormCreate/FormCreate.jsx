@@ -27,32 +27,33 @@ const FormCreate = () => {
   });
 
   const validate = (name, value) => {
-    if (name === 'name' && !form.name) {
-      setErrors({
-        ...errors,
-        name: 'Minimo 3 caracteres',
-      });
-    } else if (name === 'name') {
-      setErrors({ ...errors, name: '' });
-    }
-    if (name === 'dificultad' && !form.dificultad) {
-      setErrors({ ...errors, dificultad: 'La dificultad es obligatoria' });
+    let error = '';
+
+    if (name === 'name') {
+      if (!value) {
+        error = 'El nombre es obligatorio';
+      } else if (value.length < 3) {
+        error = 'El nombre debe tener al menos 3 caracteres';
+      }
     } else if (name === 'dificultad') {
-      setErrors({ ...errors, dificultad: '' });
-    }
-    if (name === 'duracion' && !form.duracion) {
-      setErrors({ ...errors, duracion: 'La duración es obligatoria' });
+      if (value < 1) {
+        error = 'La dificultad es obligatoria';
+      }
     } else if (name === 'duracion') {
-      setErrors({ ...errors, duracion: '' });
-    }
-    if (name === 'temporada' && form.temporada === '') {
-      setErrors({ ...errors, temporada: 'La temporada es obligatoria' });
+      if (value === 'Seleccione') {
+        error = 'La duración es obligatoria';
+      }
     } else if (name === 'temporada') {
-      setErrors({ ...errors, temporada: '' });
+      if (value === 'temporada') {
+        error = 'La temporada es obligatoria';
+      }
+    } else if (name === 'countries') {
+      if (value.length === 0) {
+        error = 'Debe seleccionar al menos un país';
+      }
     }
-    if (name === 'countries' && !form.countries.length) {
-      setErrors({ ...errors, countries: 'Debe seleccionar mínimo 1 país' });
-    }
+
+    setErrors({ ...errors, [name]: error });
   };
 
   countryName?.filter((country) =>
@@ -67,16 +68,21 @@ const FormCreate = () => {
 
   const handleDificultyChange = (event) => {
     const value = event.target.value;
+    const name = event.target.name;
     setForm({ ...form, dificultad: Number(value) });
+    validate(name, value);
   };
 
   const handleDurationChange = (event) => {
     const value = event.target.value;
+    const name = event.target.name;
     setForm({ ...form, duracion: Number(value) });
+    validate(name, value);
   };
 
   const handleCountrySelect = (event) => {
     const value = event.target.value;
+    const name = event.target.name;
     const updatedCountries = [...form.countries];
 
     if (!updatedCountries.includes(value)) {
@@ -92,6 +98,7 @@ const FormCreate = () => {
     } else {
       setForm({ ...form, countries: updatedCountries });
     }
+    validate(name, value);
   };
 
   const handleSubmit = (event) => {
@@ -147,14 +154,14 @@ const FormCreate = () => {
               className={style.select}
               onChange={handleDificultyChange}
             >
-              {errors.temporada && <p>{errors.temporada}</p>}
-              <option value=''>Seleccione temporada</option>
+              <option value=''>Seleccione dificultad</option>
               <option value='1'>⭐ ☆ ☆ ☆ ☆</option>
               <option value='2'>⭐⭐ ☆ ☆ ☆</option>
               <option value='3'>⭐⭐⭐ ☆ ☆</option>
               <option value='4'>⭐⭐⭐⭐ ☆</option>
               <option value='5'>⭐⭐⭐⭐⭐</option>
             </select>
+            {errors.dificultad && <p>{errors.dificultad}</p>}
           </div>
           <div className={style.duracion}>
             <label>Duración:</label>
@@ -163,7 +170,7 @@ const FormCreate = () => {
               className={style.select}
               onChange={handleDurationChange}
             >
-              <option value=''>Seleccione</option>
+              <option value='Seleccione'>Seleccione</option>
               <option value='0.25'>15 minutos</option>
               <option value='0.5'>30 minutos</option>
               <option value='1'>1 hora</option>
@@ -172,6 +179,7 @@ const FormCreate = () => {
               <option value='4'>4 horas</option>
               <option value='5'>5 horas</option>
             </select>
+            {errors.duracion && <p>{errors.duracion}</p>}
           </div>
           <div className={style.temporadaAndCountries}>
             <label>Temporada:</label>
@@ -180,12 +188,13 @@ const FormCreate = () => {
               name='temporada'
               onChange={handleChange}
             >
-              <option value=''>Seleccione temporada</option>
+              <option value='temporada'>Seleccione temporada</option>
               <option value='Verano'>Verano</option>
               <option value='Otoño'>Otoño</option>
               <option value='Invierno'>Invierno</option>
               <option value='Primavera'>Primavera</option>
             </select>
+            {errors.temporada && <p>{errors.temporada}</p>}
           </div>
           <div className={style.temporadaAndCountries}>
             <label>Paises:</label>
