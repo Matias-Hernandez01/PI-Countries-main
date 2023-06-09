@@ -21,6 +21,12 @@ const NavBar = () => {
     setValueSearch({ ...valueSearch, valueSearch: '' });
   };
 
+  const logOut = () => {
+    const nombre = localStorage.getItem('nombre');
+    localStorage.clear();
+    history.push('/');
+  };
+
   return (
     <div className={style.containerNavBar}>
       <div className={style.containerImage}>
@@ -60,6 +66,9 @@ const NavBar = () => {
           Create
         </button>
         <h1 className={style.nombre}>{nombre}</h1>
+        <button className={style.logOut} onClick={logOut}>
+          Log out
+        </button>
       </div>
     </div>
   );
