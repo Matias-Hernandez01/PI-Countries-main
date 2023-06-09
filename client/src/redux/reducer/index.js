@@ -13,6 +13,7 @@ const initialState = {
   detail: [],
   nameLanding: '',
   activities: [],
+  search: [],
 };
 
 const rootReducer = (State = initialState, action) => {
@@ -24,9 +25,12 @@ const rootReducer = (State = initialState, action) => {
         aux: action.payload,
       };
     case GET_COUNTRY:
+      const results =
+        action.payload.length >= 1 ? action.payload : [...State.aux];
+
       return {
         ...State,
-        aux: action.payload,
+        aux: results,
       };
 
     case COUNTRY_DETAIL: {
