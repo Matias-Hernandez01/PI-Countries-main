@@ -44,7 +44,7 @@ const FormCreate = () => {
         error = 'La duración es obligatoria';
       }
     } else if (name === 'temporada') {
-      if (value === 'temporada') {
+      if (value === '') {
         error = 'La temporada es obligatoria';
       }
     } else if (name === 'countries') {
@@ -116,6 +116,10 @@ const FormCreate = () => {
     });
   };
 
+  const deletedCountry = (value) => {
+    form.countries.filter((country) => country !== value);
+  };
+
   useEffect(() => {
     dispatch(getApi());
   }, [dispatch]);
@@ -145,7 +149,7 @@ const FormCreate = () => {
               placeholder='Nombre de la actividad'
               onChange={handleChange}
             />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p className={style.error}>{errors.name}</p>}
           </div>
           <div className={style.dificultad}>
             <label>Dificultad:</label>
@@ -161,7 +165,9 @@ const FormCreate = () => {
               <option value='4'>⭐⭐⭐⭐ ☆</option>
               <option value='5'>⭐⭐⭐⭐⭐</option>
             </select>
-            {errors.dificultad && <p>{errors.dificultad}</p>}
+            {errors.dificultad && (
+              <p className={style.error}>{errors.dificultad}</p>
+            )}
           </div>
           <div className={style.duracion}>
             <label>Duración:</label>
@@ -179,7 +185,9 @@ const FormCreate = () => {
               <option value='4'>4 horas</option>
               <option value='5'>5 horas</option>
             </select>
-            {errors.duracion && <p>{errors.duracion}</p>}
+            {errors.duracion && (
+              <p className={style.error}>{errors.duracion}</p>
+            )}
           </div>
           <div className={style.temporadaAndCountries}>
             <label>Temporada:</label>
@@ -188,13 +196,15 @@ const FormCreate = () => {
               name='temporada'
               onChange={handleChange}
             >
-              <option value='temporada'>Seleccione temporada</option>
+              <option value=''>Seleccione temporada</option>
               <option value='Verano'>Verano</option>
               <option value='Otoño'>Otoño</option>
               <option value='Invierno'>Invierno</option>
               <option value='Primavera'>Primavera</option>
             </select>
-            {errors.temporada && <p>{errors.temporada}</p>}
+            {errors.temporada && (
+              <p className={style.error}>{errors.temporada}</p>
+            )}
           </div>
           <div className={style.temporadaAndCountries}>
             <label>Paises:</label>
@@ -212,28 +222,32 @@ const FormCreate = () => {
                 );
               })}
             </select>
-            {errors.countries && <p>{errors.countries}</p>}
+            {errors.countries && (
+              <p className={style.error}>{errors.countries}</p>
+            )}
+            <p className={style.selectedPaises}>Paises seleccionados:</p>
             <div className={style.selectorDePaises}>
-              <p>Paises seleccionados:</p>
               <div className={style.nameCountriesSelected}>
                 {form.countries.map((country, index) => (
-                  <p key={index}>{country}</p>
+                  <p className={style.nombrePaises} key={index}>
+                    {country}
+                    <button onClick={() => deletedCountry(country)}>x</button>
+                  </p>
                 ))}
               </div>
             </div>
           </div>
           <div>
-            <button
-              disabled={
-                !form.name ||
-                !form.dificultad ||
-                !form.duracion ||
-                !form.temporada ||
-                !form.countries.length
-              }
-            >
-              Create activity
-            </button>
+            {!form.name ||
+            !form.dificultad ||
+            !form.duracion ||
+            !form.temporada.length ||
+            form.name.length < 3 ||
+            !form.countries.length ? (
+              <button disabled={true}>Create Activity</button>
+            ) : (
+              <button className={style.buttonOk}>Create Activity</button>
+            )}
           </div>
         </form>
       </div>
