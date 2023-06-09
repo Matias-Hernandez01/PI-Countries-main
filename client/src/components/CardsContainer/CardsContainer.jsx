@@ -28,7 +28,7 @@ const CardsContainer = () => {
   const cantPages = arrayPages.length;
 
   useEffect(() => {
-    dispatch(getApi(dependencia));
+    dispatch(getApi());
     dispatch(getActivities());
   }, [dispatch]);
 
