@@ -2,7 +2,6 @@ import {
   GET_API,
   GET_COUNTRY,
   FILTER,
-  SEARCH,
   COUNTRY_DETAIL,
   GET_ACTIVITIES,
   FILTER_ACTIVITIES,
@@ -31,13 +30,6 @@ export const filter = (continent, population) => {
   return {
     type: FILTER,
     payload: [continent, population],
-  };
-};
-
-export const searchByName = (value) => {
-  return {
-    type: SEARCH,
-    payload: value,
   };
 };
 
