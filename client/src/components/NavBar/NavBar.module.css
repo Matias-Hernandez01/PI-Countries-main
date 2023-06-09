@@ -3,7 +3,7 @@
   background-size: cover;
   width: 100%;
   display: grid;
-  grid-template-columns:  0.2fr 1fr .5fr; 
+  grid-template-columns:  0.2fr 1fr .8fr; 
   height: 100px;
   border: 0; 
   margin: 0;
@@ -52,7 +52,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .create{
@@ -101,21 +101,23 @@
   border-Radius: 8px;
   padding: 12px 24px;
   font-Size: 16px;
-  background: linear-gradient(45deg, #C1752E 30%, #BE9161 90%);
+  background: linear-gradient(45deg, #297423 30%, #81f090 90%);
   color: white;
   box-Shadow: 0 3px 5px 2px #BE9161(255, 105, 135, .3);
 }
 
+.logOut:hover{
+  background: linear-gradient(45deg, #f32b3c 30%, #752525 90%);
+  cursor: pointer;
+}
+
 .nombre{
-  font-family: Arial, sans-serif;
+  font-Family: Arial, sans-serif;
+  font-Weight: bold;
+  border-Radius: 8px;
+  padding: 12px 24px;
   font-Size: 16px;
-  display: grid;
-  align-items: center;
-  width: 100px;
-  height: 43px; 
-  font-weight: bold;
-  border-radius: 10px;
-  background-color:#222E38;
-  text-shadow: 3px 2px 5px #000000;
+  background: linear-gradient(45deg, #C1752E 30%, #BE9161 90%);
   color: white;
+  box-Shadow: 0 3px 5px 2px #BE9161(255, 105, 135, .3);
 }
