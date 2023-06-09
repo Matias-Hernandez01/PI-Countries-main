@@ -16,7 +16,7 @@
 .form{
   background-color: rgba(214, 137, 37, 0.781);
   width: 500px;
-  height: 650px;
+  height: 730px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,12 +46,14 @@
 }
 
 .input{
-  width: 250px;
+  font-size: 15px;
+  width: 300px;
   height: 30px;
   margin:0;
   background-color: transparent;
   color: white;
-  border: 1px solid rgb(248, 186, 17) 
+  border: 1px solid rgb(248, 186, 17);
+  border-radius: 5px;
 }
 
 .input::placeholder{
@@ -77,15 +79,20 @@
 }
 
 .select{
-  width: 250px;
+  width: 300px;
   height: 30px;
   margin:0;
-  background-color: transparent;
+  background-color: #AE7529;
+  border-radius: 5px;
+  color: aliceblue;
+  font-family: monospace;
   color: white;
-  border: 1px solid rgb(248, 186, 17) 
+  border: 1px solid rgb(248, 186, 17); 
+  font-size: 15px;
 }
 .select:hover{
-  color:black;
+  color:rgb(255, 255, 255);
+  background-color: #C1945E;
 }
 
 .duracion{
@@ -119,10 +126,15 @@
 .selectorDePaises {
   display: flex;
   flex-direction: column;
+  height: 100px;
 }
 
 .nameCountriesSelected {
+  width: 300px;
   flex-direction: column; 
+  background-color:#C1945E;
+  overflow: auto;
+  border-radius: 4px;
 }
 
 .buttonBack{
@@ -148,4 +160,35 @@
   justify-content: flex-start;
   height: 60px;
   padding-left: 50px;
+}
+
+.error{
+  font-size: 13px;
+  color: red;
+  font-weight: bold;
+  font-family:Arial, Helvetica, sans-serif;
+  text-shadow: 0px 0px 5px rgb(230, 141, 141);
+  text-transform: uppercase;
+}
+
+
+.buttonOk{
+  background-color: green;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid greenyellow;
+  height: 30px;
+}
+
+.selectedPaises{
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  font-family: monospace;
+}
+
+.nombrePaises{
+  font-size: 15px;
+  font-family: monospace;
+  color: black;
+  text-shadow: 0px 0px 5px white;
 }
