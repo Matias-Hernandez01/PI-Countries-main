@@ -1,5 +1,6 @@
 .containerNavBar{
-  background-image: url("../../images/background-home.jpg");
+  background-image: url("../../images/background-landing.jpg");
+  background-size: cover;
   width: 100%;
   display: grid;
   grid-template-columns:  0.2fr 1fr .5fr; 
@@ -41,12 +42,11 @@
 }
 
 
-  .buttonAndInput {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espacio mínimo entre la imagen y el input */
-  }
-
+.buttonAndInput {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
 
 .containerCreate {
   display: grid;
