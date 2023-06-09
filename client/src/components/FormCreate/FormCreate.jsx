@@ -56,7 +56,7 @@ const FormCreate = () => {
     setErrors({ ...errors, [name]: error });
   };
 
-  countryName?.filter((country) =>
+  const allNamesCountries = countryName?.filter((country) =>
     country.name ? names.push(country.name) : ''
   );
 
@@ -65,7 +65,6 @@ const FormCreate = () => {
     setForm({ ...form, [name]: value });
     validate(name, value);
   };
-
   const handleDificultyChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -100,6 +99,12 @@ const FormCreate = () => {
     }
     validate(name, value);
   };
+  const deletedCountry = (value, event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const results = form.countries.filter((country) => country !== value);
+    setForm({ ...form, countries: results });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -114,10 +119,6 @@ const FormCreate = () => {
       temporada: '',
       countries: [],
     });
-  };
-
-  const deletedCountry = (value) => {
-    form.countries.filter((country) => country !== value);
   };
 
   useEffect(() => {
@@ -229,9 +230,16 @@ const FormCreate = () => {
             <div className={style.selectorDePaises}>
               <div className={style.nameCountriesSelected}>
                 {form.countries.map((country, index) => (
-                  <p className={style.nombrePaises} key={index}>
+                  <p value={country} className={style.nombrePaises} key={index}>
                     {country}
-                    <button onClick={() => deletedCountry(country)}>x</button>
+                    <button
+                      className={style.buttonDelete}
+                      onClick={(event) => {
+                        deletedCountry(country, event);
+                      }}
+                    >
+                      x
+                    </button>
                   </p>
                 ))}
               </div>
