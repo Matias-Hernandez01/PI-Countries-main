@@ -1,9 +1,12 @@
 import styles from './Landing.module.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 
 const Landing = () => {
   const history = useHistory();
+  const [loading, setLoading] = useState(true);
+
   const [form, setForm] = useState({
     nombre: '',
     correo: '',
@@ -69,68 +72,80 @@ const Landing = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.containerForms}>
-        <div className={styles.containerTitle}>
-          <h1 className={styles.title}>Explora la tierra</h1>
+    <div>
+      {loading === true ? (
+        <Loading setLoading={setLoading} />
+      ) : (
+        <div className={styles.container}>
+          <div className={styles.containerForms}>
+            <div className={styles.containerTitle}>
+              <h1 className={styles.title}>Explora la tierra</h1>
+            </div>
+            <form onSubmit={handleOnSubmit} className={styles.forms}>
+              <div>
+                <label className={styles.label} htmlFor='nombre'>
+                  Nombre
+                </label>
+                <input
+                  className={styles.input}
+                  placeholder='Ingrese su nombre'
+                  type='text'
+                  name='nombre'
+                  value={form.nombre}
+                  onChange={handleOnChange}
+                />
+                {errors.nombre && (
+                  <p className={styles.errors}>{errors.nombre}</p>
+                )}
+              </div>
+              <div>
+                <label className={styles.label} htmlFor='correo'>
+                  Correo electrónico
+                </label>
+                <input
+                  className={styles.input}
+                  type='text'
+                  placeholder='Ingrese su correo electrónico'
+                  name='correo'
+                  value={form.correo}
+                  onChange={handleOnChange}
+                />
+                {errors.correo && (
+                  <p className={styles.errors}>{errors.correo}</p>
+                )}
+              </div>
+              <div>
+                <label className={styles.label} htmlFor='contraseña'>
+                  Contraseña
+                </label>
+                <input
+                  className={styles.input}
+                  type='password'
+                  placeholder='Ingrese su contraseña'
+                  name='contraseña'
+                  value={form.contraseña}
+                  onChange={handleOnChange}
+                />{' '}
+                {errors.contraseña && (
+                  <p className={styles.errors}>{errors.contraseña}</p>
+                )}
+              </div>
+              <button
+                disabled={
+                  !form.correo ||
+                  !form.contraseña ||
+                  !form.nombre ||
+                  errors.contraseña ||
+                  errors.nombre ||
+                  errors.correo
+                }
+              >
+                Iniciar sesión
+              </button>
+            </form>
+          </div>
         </div>
-        <form onSubmit={handleOnSubmit} className={styles.forms}>
-          <div>
-            <label className={styles.label} htmlFor='nombre'>
-              Nombre
-            </label>
-            <input
-              className={styles.input}
-              placeholder='Ingrese su nombre'
-              type='text'
-              name='nombre'
-              value={form.nombre}
-              onChange={handleOnChange}
-            />
-            {errors.nombre && <p>{errors.nombre}</p>}
-          </div>
-          <div>
-            <label className={styles.label} htmlFor='correo'>
-              Correo electrónico
-            </label>
-            <input
-              className={styles.input}
-              type='text'
-              placeholder='Ingrese su correo electrónico'
-              name='correo'
-              value={form.correo}
-              onChange={handleOnChange}
-            />
-            {errors.correo && <p>{errors.correo}</p>}
-          </div>
-          <div>
-            <label className={styles.label} htmlFor='contraseña'>
-              Contraseña
-            </label>
-            <input
-              className={styles.input}
-              type='password'
-              placeholder='Ingrese su contraseña'
-              name='contraseña'
-              value={form.contraseña}
-              onChange={handleOnChange}
-            />{' '}
-            {errors.contraseña && <p>{errors.contraseña}</p>}
-          </div>
-          <button
-            disabled={
-              !form.correo ||
-              !form.contraseña ||
-              !form.nombre ||
-              errors.contraseña ||
-              errors.nombre ||
-              errors.correo
-            }
-          >
-            Iniciar sesión
-          </button>
-        </form>
-      </div>
+      )}
     </div>
   );
 };
